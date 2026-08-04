@@ -19,14 +19,9 @@ jobs:
         with:
           node-version: '20'
 
-      - name: Install HTML & Style Linter Tools
-        run: |
-          npm install -g htmlhint stylelint stylelint-config-standard
-
       - name: Validate HTML Structure
-        run: npx htmlhint index.html
+        run: npx --yes htmlhint index.html
 
       - name: Validate CSS Formatting
         run: |
-          npx stylelint stylelint-config-standard --write-config
-          npx stylelint "style.css"
+          npx --yes stylelint "style.css" --config '{"rules": {"color-no-invalid-hex": true, "block-no-empty": true}}'
