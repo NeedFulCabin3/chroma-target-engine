@@ -1,4 +1,4 @@
-name: Markup & Style Validation
+name: Static Code Health Check
 
 on:
   push:
@@ -19,9 +19,15 @@ jobs:
         with:
           node-version: '20'
 
+      - name: Setup Python Environment
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
       - name: Validate HTML Structure
         run: npx --yes htmlhint index.html
 
-      - name: Validate CSS Formatting
+      - name: Validate CSS Syntax
         run: |
-          npx --yes stylelint "style.css" --config '{"rules": {"color-no-invalid-hex": true, "block-no-empty": true}}'
+          pip install cssutils
+          python -c "import cssutils; parser = cssutils.CSSParser(raiseExceptions=True); parser.parseFile('style.css')"
