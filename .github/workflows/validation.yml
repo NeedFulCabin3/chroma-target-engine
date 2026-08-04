@@ -1,0 +1,32 @@
+name: Markup & Style Validation
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  validate-code:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js Environment
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install HTML & Style Linter Tools
+        run: |
+          npm install -g htmlhint stylelint stylelint-config-standard
+
+      - name: Validate HTML Structure
+        run: npx htmlhint index.html
+
+      - name: Validate CSS Formatting
+        run: |
+          npx stylelint stylelint-config-standard --write-config
+          npx stylelint "style.css"
