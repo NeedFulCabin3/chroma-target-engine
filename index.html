@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Target-Shooting Minigame</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="game-wrapper">
+        <header>
+            <h1>CSS Arcade Range</h1>
+            <p>Hit the moving targets before they vanish!</p>
+        </header>
+
+        <input type="checkbox" id="target-1" class="target-trigger">
+        <input type="checkbox" id="target-2" class="target-trigger">
+        <input type="checkbox" id="target-3" class="target-trigger">
+        <input type="checkbox" id="target-4" class="target-trigger">
+        <input type="checkbox" id="target-5" class="target-trigger">
+
+        <div class="score-board">
+            Score: <span class="score-display"></span>
+        </div>
+
+        <div class="range-field">
+            <label for="target-1" class="target t1"></label>
+            <label for="target-2" class="target t2"></label>
+            <label for="target-3" class="target t3"></label>
+            <label for="target-4" class="target t4"></label>
+            <label for="target-5" class="target t5"></label>
+            
+            <div class="game-over-screen">
+                <h2>Time's Up!</h2>
+                <label for="restart" class="reset-btn" onclick="location.reload()">Play Again</label>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
